@@ -1,0 +1,8 @@
+{
+  "name": "selltostate-mcp",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "selltostate-mcp": "./bin/selltostate-mcp.js"
+  }
+}
