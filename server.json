@@ -1,0 +1,27 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.selltostate/mcp",
+  "title": "Sell to State",
+  "description": "Government tenders, contract awards, buyers and suppliers from official sources in 60+ countries.",
+  "version": "0.4.0",
+  "websiteUrl": "https://selltostate.com/mcp/",
+  "repository": {
+    "url": "https://github.com/getbeton/selltostate-mcp",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/getbeton/selltostate-skills/main/assets/icon.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://app.selltostate.com/api/mcp"
+    }
+  ]
+}
