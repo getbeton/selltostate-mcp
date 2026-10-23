@@ -3,21 +3,11 @@ export const DEFAULT_MCP_URL = "https://app.selltostate.com/api/mcp";
 export async function handleRpc(msg, deps) {
   if (!msg || msg.jsonrpc !== "2.0") return null;
   if (msg.method && msg.id === undefined) return null;
-  if (msg.method === "initialize") {
-    return {
-      jsonrpc: "2.0",
-      id: msg.id,
-      result: {
-        protocolVersion: "2024-11-05",
-        capabilities: { tools: {} },
-        serverInfo: { name: "selltostate", version: "0.1.0" },
-      },
-    };
-  }
   if (msg.method === "ping") {
     return { jsonrpc: "2.0", id: msg.id, result: {} };
   }
-  if (msg.method !== "tools/list" && msg.method !== "tools/call") {
+  // initialize goes upstream too: the server sets the protocol version and its instructions.
+  if (msg.method !== "initialize" && msg.method !== "tools/list" && msg.method !== "tools/call") {
     return { jsonrpc: "2.0", id: msg.id ?? null, error: { code: -32601, message: "method not found" } };
   }
   if (msg.method === "tools/call" && !deps.apiKey) {

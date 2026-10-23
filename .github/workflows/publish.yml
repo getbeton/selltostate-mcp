@@ -1,0 +1,39 @@
+# Publishes to npm with a provenance statement on a version tag (for example 0.1.1).
+# With the NPM_TOKEN secret: the version is STAGED (npm stage publish). A maintainer
+# approves it with 2FA on npmjs.com (Staged Packages tab).
+# Without NPM_TOKEN: trusted publishing (OIDC). Set it on npmjs.com, package settings,
+# Trusted Publisher: GitHub Actions, getbeton / this repo / publish.yml.
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install -g npm@11
+      - run: npm test
+      - name: Publish
+        run: |
+          if [ "${GITHUB_REF_NAME}" != "$(node -p 'require("./package.json").version')" ]; then
+            echo "tag ${GITHUB_REF_NAME} does not match package.json version"; exit 1
+          fi
+          if [ -n "$NODE_AUTH_TOKEN" ]; then
+            npm stage publish --provenance
+          else
+            npm publish --provenance
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

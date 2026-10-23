@@ -10,15 +10,17 @@ Set `STS_API_KEY`. A missing key fails `tools/call` before the network call.
 {
   "mcpServers": {
     "selltostate": {
-      "command": "node",
-      "args": ["bin/selltostate-mcp.js"],
+      "command": "npx",
+      "args": ["-y", "selltostate-mcp"],
       "env": { "STS_API_KEY": "sts_..." }
     }
   }
 }
 ```
 
-This server is not an npm package. Run it with node from this repository.
+Use this server for a client that runs only local (stdio) servers, or when you prefer an API key to OAuth. A client that supports remote servers (Claude, ChatGPT, Cursor, VS Code, Gemini CLI) can connect to `https://app.selltostate.com/api/mcp` directly and sign in with OAuth. Setup per client: https://www.selltostate.com/mcp/
+
+Transport: stdio, one JSON-RPC message per line. `STS_MCP_URL` changes the upstream URL.
 
 ## Also
 
@@ -40,4 +42,4 @@ This server is not an npm package. Run it with node from this repository.
 - https://github.com/getbeton/selltostate-node
 - https://github.com/getbeton/selltostate-next
 
-This package is not published to npm, PyPI, Maven Central, crates.io, RubyGems, or Homebrew.
+npm: [`selltostate-mcp`](https://www.npmjs.com/package/selltostate-mcp). The other clients in the list are not published to a package registry.

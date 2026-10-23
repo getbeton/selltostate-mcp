@@ -1,8 +1,23 @@
 {
   "name": "selltostate-mcp",
-  "private": true,
+  "version": "0.1.0",
+  "description": "Stdio MCP server for Sell to State: government tenders, contract awards, buyers and suppliers in 60+ countries. Forwards to https://app.selltostate.com/api/mcp.",
+  "mcpName": "com.selltostate/mcp",
+  "license": "MIT",
+  "homepage": "https://www.selltostate.com/mcp/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getbeton/selltostate-mcp.git"
+  },
+  "keywords": ["mcp", "model-context-protocol", "government-contracts", "tenders", "public-procurement"],
   "type": "module",
   "bin": {
-    "selltostate-mcp": "./bin/selltostate-mcp.js"
-  }
+    "selltostate-mcp": "bin/selltostate-mcp.js"
+  },
+  "files": ["bin", "src", "README.md", "LICENSE"],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "publishConfig": { "access": "public" }
 }
