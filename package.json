@@ -17,7 +17,7 @@
   "files": ["bin", "src", "README.md", "LICENSE"],
   "engines": { "node": ">=18" },
   "scripts": {
-    "test": "node --test test/"
+    "test": "node --test \"test/*.test.mjs\""
   },
   "publishConfig": { "access": "public" }
 }
