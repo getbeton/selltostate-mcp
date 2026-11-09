@@ -1,7 +1,7 @@
 {
   "name": "selltostate-mcp",
   "version": "0.1.0",
-  "description": "Stdio MCP server for Sell to State: government tenders, contract awards, buyers and suppliers in 60+ countries. Forwards to https://app.selltostate.com/api/mcp.",
+  "description": "Stdio MCP server for Sell to State: government tenders, contract awards, buyers and suppliers in 70+ countries. Forwards to https://app.selltostate.com/api/mcp.",
   "mcpName": "com.selltostate/mcp",
   "license": "MIT",
   "homepage": "https://www.selltostate.com/mcp/",
